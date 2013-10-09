@@ -8,7 +8,8 @@
     <string name="hello_world">Hello world!</string>
 
     <string-array name="spinner_array">
-        <item>Hugh Marshall</item>
+        <item></item>
+        <item>Hugh Marshall Wellington</item>
         <item>Victoria University Wellington</item>
         <item>Wellington</item>
          <item>Invercargill</item>

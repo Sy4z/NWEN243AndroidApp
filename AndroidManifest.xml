@@ -29,6 +29,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="net.hughmarshall.myfirstapp.MainActivity" />
         </activity>
+        <activity
+            android:name="net.hughmarshall.myfirstapp.SpinnerActivity"
+            android:label="@string/title_activity_spinner" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="net.hughmarshall.myfirstapp.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

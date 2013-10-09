@@ -1,7 +1,7 @@
-NWEN243Android
-==============
+NWEN243AndroidApp
+=================
 
-NWEN243 Metlink Android App
+NWEN243 Android App
 
 Uses Google API level 8 - Android 2.2 (Froyo)
 

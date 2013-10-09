@@ -11,6 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 public class MainActivity extends Activity implements OnItemSelectedListener {
+	
+	private int spinnerInitialCount= 0;
+	private static final int NO_OF_EVENTS = 1;
 
 	// String constant is the key intent.putExtra() in sendMessage()
 	public final static String EXTRA_MESSAGE = "net.hughmarshall.myFirstApp.MESSAGE";
@@ -22,13 +25,12 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
 		// Create the spinner
 		Spinner spinner = (Spinner) findViewById(R.id.planets_spinner);
 
 		// Create an ArrayAdapter using the string array and a default spinner
 		// layout
-		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.planets_array,
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinner_array,
 				android.R.layout.simple_spinner_item);
 
 		// Specify the layout to use when the list of choices appears
@@ -36,22 +38,30 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 
 		// Apply the adapter to the spinner
 		spinner.setAdapter(adapter);
-
+		
+		//Set this as the listener of the spinner
 		spinner.setOnItemSelectedListener(this);
+
 	}
 
 	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
-
+		//trying to avoid undesired spinner selection changed event, a known problem
+        if (spinnerInitialCount < NO_OF_EVENTS) {
+            spinnerInitialCount++;
+        } else {  
 		// create a new intent, passing it this context and the class
 		// of the app component to deliver the intent to
 		Intent intent = new Intent(this, DisplayMessageActivity.class);
-		
-		String message = parent.getItemAtPosition(pos).toString();
+
+		// Message is URL for a google search + the contents of the spinner
+		String message = "https://www.google.com/search?q=" + parent.getItemAtPosition(pos).toString();
 		intent.putExtra(EXTRA_MESSAGE, message);
-		
-		//start an instance of DisplayMessageActivity as specified by the intent
+
+		// start an instance of DisplayMessageActivity as specified by the
+		// intent
 		startActivity(intent);
+        }
 	}
 
 	public void onNothingSelected(AdapterView<?> parent) {
@@ -65,21 +75,5 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 		return true;
 	}
 
-	/**
-	 * Called when the user clicks the send button
-	 * 
-	 * public void sendMessage(View view){ //create a new intent, passing it
-	 * this context and the class //of the app component to deliver the intent
-	 * to Intent intent = new Intent(this, DisplayMessageActivity.class);
-	 * 
-	 * //find the EditText element and add it's value to the intent //putExtra
-	 * takes a Key Value pair, in this case the key is the //constant
-	 * EXTRA_MESSAGE, and the value is the text from editText EditText editText
-	 * = (EditText) findViewById(R.id.edit_message); String message =
-	 * editText.getText().toString(); intent.putExtra(EXTRA_MESSAGE, message);
-	 * 
-	 * //start an instance of DisplayMessageActivity as specified by the intent
-	 * startActivity(intent); }
-	 */
 
 }

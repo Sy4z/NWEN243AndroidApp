@@ -35,7 +35,7 @@ public class DisplayMessageActivity extends Activity {
 		//being the URL for a google search + selected item from the spinner
 		webView.loadUrl(message);
 		
-		//make webView visible
+		//make webView visible on screen
 		setContentView(webView);
 	}
 

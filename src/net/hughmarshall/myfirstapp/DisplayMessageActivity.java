@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.webkit.WebView;
 
 public class DisplayMessageActivity extends Activity {
 
@@ -28,15 +28,15 @@ public class DisplayMessageActivity extends Activity {
 		Intent intent = getIntent();
 		String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 		
-		//Then to show the message on the screen:
+		//Create a new WebView
+		WebView webView = (WebView) findViewById(R.id.webview);
 		
-		//Create a text view widget
-		TextView textView = new TextView(this);
-		textView.setTextSize(40);
-		textView.setText(message);
+		//Load the load the URL provided by message
+		//being the URL for a google search + selected item from the spinner
+		webView.loadUrl(message);
 		
-		//Add the TextView as the root view of the activity's layout
-		setContentView(textView);
+		//make webView visible
+		setContentView(webView);
 	}
 
 	/**

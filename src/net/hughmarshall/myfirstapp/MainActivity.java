@@ -10,6 +10,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+//Added a useless one line comment to check everything is working
 public class MainActivity extends Activity implements OnItemSelectedListener {
 
 	// String constant is the key intent.putExtra() in sendMessage()

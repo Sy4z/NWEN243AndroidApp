@@ -46,10 +46,11 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 
 	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
-		//trying to avoid undesired spinner selection changed event, a known problem
-        if (spinnerInitialCount < NO_OF_EVENTS) {
-            spinnerInitialCount++;
-        } else {  
+		//If itemSelected is the default "Choose a value..." string, don't do anything
+		if (parent.getItemAtPosition(pos).toString().equalsIgnoreCase("Choose A Value...")){
+
+        } else { 
+        	
 		// create a new intent, passing it this context and the class
 		// of the app component to deliver the intent to
 		Intent intent = new Intent(this, DisplayMessageActivity.class);
@@ -62,6 +63,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 		// intent
 		startActivity(intent);
         }
+		
 	}
 
 	public void onNothingSelected(AdapterView<?> parent) {

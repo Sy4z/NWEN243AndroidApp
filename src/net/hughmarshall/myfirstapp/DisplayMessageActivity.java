@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class DisplayMessageActivity extends Activity {
 
@@ -15,7 +16,7 @@ public class DisplayMessageActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_display_message);
-		
+			
 		/*
 		 * Hugh commented this out
 		// Show the Up button in the action bar.
@@ -30,6 +31,9 @@ public class DisplayMessageActivity extends Activity {
 		
 		//Create a new WebView
 		WebView webView = (WebView) findViewById(R.id.webview);
+		
+		//Stop Links being redirected to default android browser
+		webView.setWebViewClient(new WebViewClient());
 		
 		//Load the load the URL provided by message
 		//being the URL for a google search + selected item from the spinner
